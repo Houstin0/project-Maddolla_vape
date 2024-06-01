@@ -1,0 +1,105 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape_1.jpg",
+      "flavours": [
+        "Triple berry ice",
+        "Bluerazz ice",
+        "Cranberry grape",
+        "Rainbow candy"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape_11.jpg",
+      "flavours": [
+        "Energy",
+        "Mango peach",
+        "Sakura grape",
+        "Watermelon bubblegum"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ElfBar 5000puffs",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape2.jpg",
+      "flavours": [
+        "Triple berry ice",
+        "Bluerazz ice",
+        "Cranberry grape",
+        "Rainbow candy",
+        "Energy",
+        "Mango peach",
+        "Sakura grape",
+        "Watermelon bubblegum"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape3.jpg",
+      "flavours": [
+        "Triple berry ice",
+        "Bluerazz ice",
+        "Cranberry grape",
+        "Watermelon bubblegum"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Vapokiss",
+      "price": 1300,
+      "imageSrc": "/vape_products/vape4.jpg",
+      "flavours": ["Triple berry ice"]
+    },
+    {
+      "id": 6,
+      "name": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape5.jpg",
+      "flavours": ["Mango peach", "Sakura grape", "Watermelon bubblegum"]
+    },
+    {
+      "id": 7,
+      "name": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape7.jpg",
+      "flavours": ["Triple berry ice", "Watermelon bubblegum"]
+    },
+    {
+      "id": 8,
+      "name": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape8.jpg",
+      "flavours": ["Bluerazz ice", "Cranberry grape"]
+    },
+    {
+      "id": 9,
+      "name": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape9.jpg",
+      "flavours": ["Bluerazz ice", "Sakura grape", "Watermelon bubblegum"]
+    },
+    {
+      "id": 10,
+      "name": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape10.jpg",
+      "flavours": ["Watermelon bubblegum"]
+    },
+    {
+      "id": 11,
+      "name": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+      "price": 2300,
+      "imageSrc": "/vape_products/vape12.jpg",
+      "flavours": ["Rainbow candy", "Energy", "Mango peach"]
+    }
+  ]
+}
