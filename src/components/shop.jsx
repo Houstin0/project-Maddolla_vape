@@ -8,6 +8,7 @@ export default function Shop() {
   const [filteredProducts, setFilteredProducts] = useState(Products);
   const [showAll, setShowAll] = useState(false);
   
+  
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -32,14 +33,30 @@ export default function Shop() {
 
    // Function to handle order button click
    const handleOrderClick = (product) => {
-    const message = `I want to order ${product.name}.`;
-    const phoneNumber = "+254727041155"; // Replace with your WhatsApp number
+    // const flavor = prompt("Enter the flavor you want:");
+    // if (flavor === null) {
+    //   // If the user cancels the prompt, return early
+    //   return;
+    // }  
+
+  // const message = `
+  //   I want to order ${product.name}.
+  //   Flavor: ${flavor}.
+  //   Price: Ksh.${product.price}.
+  // `;
+
+  const message = `
+  I want to order ${product.name}.
+  Flavor: ${product.flavours.join(", ")}.
+  Price: Ksh.${product.price}.
+`;
+    const phoneNumber = "+254727041155"; 
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.location.href = whatsappUrl;
   };
 
   return (
-    <main className=" mt-12 px-4">
+    <main className=" mt-12 ">
  
       <form onSubmit={handleSearchSubmit} className="max-w-md mx-auto mt-10">
 
@@ -98,25 +115,25 @@ export default function Shop() {
       <div>
 
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center mx-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center mr-8">
       {filteredProducts.map((product) => (
         <div
           key={product.id}
-          className="w-full max-w-sm bg-white border border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-4 my-4 "
+          className="w-full max-w-sm bg-white border border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-4 my-4 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
         >
-          <a href="#">
+          
             <img
               className="p-8 rounded-t-lg"
               src={product.imageSrc}
               alt="product image"
             />
-          </a>
+          
           <div className="px-5 pb-5">
-            <a href="#">
+            
               <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                 {product.name}
               </h5>
-            </a>
+            
             <div className="mb-3">
           <p className="text-gray-700 dark:text-gray-300">
             <span className="font-semibold">Flavors:</span> {product.flavours.join(", ")}
