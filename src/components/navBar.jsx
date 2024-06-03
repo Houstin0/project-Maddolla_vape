@@ -67,7 +67,7 @@ export default function Navbar() {
   }, [isDarkMode]);
 
   return (
-    <nav className="fixed w-full z-20 top-0 start-0 bg-gray-100 border-gray-200 dark:bg-black h-14">
+    <nav className="fixed w-full z-20 top-0 start-0 bg-gray-100 border-gray-200 dark:bg-black ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
       <NavLink
           to="/"
@@ -141,7 +141,7 @@ export default function Navbar() {
               id="theme-toggle"
               type="button"
               onClick={toggleDarkMode}
-              className=" text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1"
+              className=" text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700  rounded-lg text-sm p-1"
             >
               <svg
                 id="theme-toggle-dark-icon"
