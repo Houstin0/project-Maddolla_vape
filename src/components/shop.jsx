@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-import productsData from "../db.json";
 
-export default function Shop() {
-  const Products=productsData.products
+
+export default function Shop({products}) {
+  
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(Products);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [showAll, setShowAll] = useState(false);
   
   
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    const filtered = Products.filter((product) => {
+    const filtered = products.filter((product) => {
       // Check if the product name matches the search term
       const nameMatch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
       // Check if any flavor matches the search term
@@ -27,7 +27,7 @@ export default function Shop() {
   };
 
   const handleShowAll = () => {
-    setFilteredProducts(Products); 
+    setFilteredProducts(products); 
     setShowAll(false); 
   };
 
