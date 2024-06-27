@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import ShoppingCart from "./shoppingCart";
+import { useEffect, useRef, useState } from "react";
 
 function ProductPopup({ product, onClose, addToCart }) {
   const scrollPosition = useRef(null);
@@ -43,7 +42,9 @@ function ProductPopup({ product, onClose, addToCart }) {
 
   return (
     <div className="mt-12 py-2 fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-30">
-      <div className="relative bg-white w-3/4 max-h-full rounded-lg">
+      <div className="relative bg-white w-full mx-5 md:mx-0 md:w-5/6 max-h-full rounded-lg overflow-y-auto hide-scrollbar">
+
+      
         <button
           className="absolute top-3 right-3 p-3 text-black dark:text-white"
           onClick={onClose}
@@ -64,7 +65,7 @@ function ProductPopup({ product, onClose, addToCart }) {
             />
           </svg>
         </button>
-        <section className={`py-8 md:py-16 dark:bg-gray-900 antialiased ${scrollable ? 'overflow-y-auto' : ''}`} ref={scrollContainerRef}>
+        <section className={`my-8 md:my-12 dark:bg-gray-900 antialiased ${scrollable ? 'overflow-y-auto hide-scrollbar' : ''}`} ref={scrollContainerRef}>
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
               <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
@@ -110,7 +111,7 @@ function ProductPopup({ product, onClose, addToCart }) {
                     className="text-white mt-4 sm:mt-0 bg-blue-800 hover:bg-blue-500 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
                   >
                     <svg className="w-5 h-5 -ms-2 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
                     </svg>
                     Add to cart
                   </button>
