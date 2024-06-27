@@ -45,8 +45,8 @@ function ProductPopup({ product, onClose,addToCart }) {
 
 
   return (
-    <div className=" mt-16 fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-30">
-     <div className="mt-2 bg-white w-3/4 max-h-full overflow-y-auto rounded-lg">
+    <div className=" mt-12 py-2 fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-30">
+     <div className=" bg-white w-3/4 max-h-full rounded-lg">
 
         <button
           className="absolute top-0 right-0 p-3 text-black dark:text-white"

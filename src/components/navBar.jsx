@@ -26,10 +26,12 @@ export default function Navbar() {
 
       if (!updatedIsDarkMode) {
         document.documentElement.classList.remove("dark");
+        document.documentElement.style.backgroundColor = "var(--bg-color-light)";
         localStorage.setItem("color-theme", "light");
         themeToggleDarkIcon.classList.remove("hidden");
         themeToggleLightIcon.classList.add("hidden");
       } else {
+        document.documentElement.style.backgroundColor = "var(--bg-color-dark)";
         document.documentElement.classList.add("dark");
         localStorage.setItem("color-theme", "dark");
         themeToggleDarkIcon.classList.add("hidden");
@@ -71,7 +73,7 @@ export default function Navbar() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
       <NavLink
           to="/"
-          className="italic text-gray-900 text-2xl font-extrabold dark:text-white flex items-center space-x-3 rtl:space-x-reverse"
+          className="italic text-black text-2xl font-extrabold dark:text-white flex items-center space-x-3 rtl:space-x-reverse"
         >
           Madolla vape
         </NavLink>
