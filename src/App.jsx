@@ -20,6 +20,17 @@ function App() {
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
+
+
+  useEffect(() => {
+    localStorage.setItem("showShoppingCart", showShoppingCart.toString());
+  }, [showShoppingCart]);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+
   useEffect(() => {
     // Check if there is a stored search query in localStorage
     const storedQuery = localStorage.getItem("searchQuery");
@@ -32,15 +43,7 @@ function App() {
     // Save the search query to localStorage
     localStorage.setItem("searchQuery", searchQuery);
   }, [searchQuery]);
-
-  useEffect(() => {
-    localStorage.setItem("showShoppingCart", showShoppingCart.toString());
-  }, [showShoppingCart]);
-
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
-
+  
   const handleSearch = (query) => {
     setSearchQuery(query);
   };

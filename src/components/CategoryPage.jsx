@@ -22,13 +22,13 @@ function CategoryPage({ addToCart, cartItems, removeFromCart, updateQuantity, sh
   ];
 
   return (
-    <div className="flex flex-col mt-12">
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-4 h-full py-3 mx-4 rounded-lg bg-blue-300">
+    <div className="flex flex-col mt-16">
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-1 h-full py-3 mx-4 rounded-lg ">
         {categories.map((cat) => (
           <Link
             key={cat}
             to={`/category/${cat}`}
-            className={`px-4 py-2 rounded-md text-gray-900 dark:text-white ${
+            className={`px-2 py-2 md:px-4 md:py-2 font-semibold rounded-md text-gray-900 dark:text-white ${
               cat === category
                 ? "bg-gray-500 dark:bg-gray-800"
                 : "bg-gray-400 dark:bg-gray-700"
@@ -41,7 +41,7 @@ function CategoryPage({ addToCart, cartItems, removeFromCart, updateQuantity, sh
       <h2 className="text-3xl font-bold ml-6 text-black dark:text-white">
         {category}
       </h2>
-      <section id="products" className="w-full mt-8">
+      <section id="products" className="w-full mt-4">
         <ProductCards
           products={filteredProducts}
           addToCart={addToCart}

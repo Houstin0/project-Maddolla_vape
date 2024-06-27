@@ -144,11 +144,11 @@ function Home({ addToCart, cartItems, removeFromCart, updateQuantity, showShoppi
         <div className="w-full lg:w-1/4 lg:ml-4 mt-2 lg:mt-0 mb-2">
           <h2 className="text-2xl font-bold mb-2 text-center text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Categories</h2>
           
-          <div className="grid grid-cols-2 gap-2">
+          <div className="flexbox space-y-2 lg:grid lg:grid-cols-2 gap-1 items-center">
             {categories.map((category, index) => (
               <button
                 key={index}
-                className={`mx-2 px-4 py-2 rounded text-gray-900 dark:text-white ${
+                className={`mx-1 px-3 py-1 font-semibold text-sm sm:text-base rounded  text-gray-900 dark:text-white ${
                   selectedCategory === category
                     ? "bg-gray-500"
                     : "bg-gray-400 dark:bg-gray-800"
@@ -163,8 +163,8 @@ function Home({ addToCart, cartItems, removeFromCart, updateQuantity, showShoppi
       </div>
 
       {/* Product cards */}
-      <section id="products" className="w-full mt-6">
-      <h2 className="text-3xl font-bold ml-8 text-black dark:text-white">
+      <section id="products" className="w-full mt-1 sm:mt-3">
+      <h2 className="text-3xl font-bold ml-8 mb-3 text-black dark:text-white">
        New Arrivals
       </h2>
         <ProductCards
