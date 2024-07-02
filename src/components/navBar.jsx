@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useLocation  } from "react-router-dom";
+import productsData from "../db.json";
 
 export default function Navbar({ onSearch, toggleCart,cartState }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 const navigate = useNavigate();
 const location = useLocation();
@@ -79,9 +81,22 @@ const location = useLocation();
     }
   }, [isDarkMode]);
 
+  useEffect(() => {
+    // Fetch data and initialize search suggestions
+    const productTitles = productsData.products.map((product) => product.title);
+    setSearchSuggestions(productTitles);
+  }, []);
+
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+    const query = event.target.value;
+    setSearchQuery(query);
+
+        // Filter suggestions based on current query
+        const filteredSuggestions = searchSuggestions.filter((title) =>
+          title.toLowerCase().includes(query.toLowerCase())
+        );
+        setSearchSuggestions(filteredSuggestions);
+      };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -147,7 +162,7 @@ const location = useLocation();
               </svg>
             </button>
           ) : (
-            <form onSubmit={handleSearchSubmit} className="flex items-center">
+            <form onSubmit={handleSearchSubmit} className="flex items-center ml-auto relative">
             <input
               type="text"
               value={searchQuery}
@@ -176,7 +191,30 @@ const location = useLocation();
                 />
               </svg>
             </button>
+          
+            {/* Autocomplete suggestions dropdown */}
+            {searchQuery.length > 0 && (
+              <div className="absolute w-64 bg-white border border-gray-300 rounded-lg shadow-lg z-10 left-0 top-full max-h-64 overflow-y-auto">
+                {searchSuggestions.map((suggestion, index) => (
+                  <div
+                    key={index}
+                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                    onClick={() => {
+                      setSearchQuery(suggestion);
+                      onSearch(suggestion);
+                      navigate("/search");
+                      setSearchQuery("");
+                    }}
+                  >
+                    {suggestion}
+                  </div>
+                ))}
+              </div>
+            )}
           </form>
+          
+          
+
           
           )}
 
