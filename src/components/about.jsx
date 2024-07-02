@@ -68,7 +68,7 @@ export default function About() {
             </p>
             <h2 className="text-teal-600">Our Commitment</h2>
             <p className="text-base font-normal text-black dark:text-gray-400">
-            At Madolla Vape, we are committed to innovation, quality, and customer satisfaction. Whether you&apos;re looking for a new vape pen, accessories, or expert advice, we're here to elevate your vaping journey.
+            At Madolla Vape, we are committed to innovation, quality, and customer satisfaction. Whether you&apos;re looking for a new vape pen, accessories, or expert advice, we&apos;re here to elevate your vaping journey.
 
 Join us at Madolla Vape – Where Quality Meets Passion!
             </p>

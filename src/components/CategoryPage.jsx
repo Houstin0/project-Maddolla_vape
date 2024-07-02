@@ -1,9 +1,8 @@
-import React from "react";
 import { useParams, Link } from "react-router-dom";
 import productsData from "../db.json";
 import ProductCards from "./productCards";
 
-function CategoryPage({ addToCart, cartItems, removeFromCart, updateQuantity, showShoppingCart }) {
+function CategoryPage({ addToCart, cartItems}) {
   const { category } = useParams();
   const filteredProducts = productsData.products.filter((product) =>
     product.categories.includes(category)
@@ -46,9 +45,7 @@ function CategoryPage({ addToCart, cartItems, removeFromCart, updateQuantity, sh
           products={filteredProducts}
           addToCart={addToCart}
           cartItems={cartItems}
-          removeFromCart={removeFromCart}
-          updateQuantity={updateQuantity}
-          showShoppingCart={showShoppingCart}
+         
         />
       </section>
     </div>

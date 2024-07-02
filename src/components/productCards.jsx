@@ -3,7 +3,7 @@ import ProductPopup from "./ProductPopup";
 import ShoppingCart from "./shoppingCart";
 
 
-function ProductCards({ products ,addToCart, cartItems,removeFromCart,updateQuantity,showShoppingCart}) {
+function ProductCards({ products ,addToCart}) {
   const [selectedProduct, setSelectedProduct] = useState(
     JSON.parse(localStorage.getItem("selectedProduct")) || null
   );
@@ -83,7 +83,7 @@ function ProductCards({ products ,addToCart, cartItems,removeFromCart,updateQuan
           addToCart={addToCart}
         />
       )}
-       {showShoppingCart && <ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />}
+     
 
 
     </div>

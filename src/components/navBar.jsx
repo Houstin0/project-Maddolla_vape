@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate  } from "react-router-dom";
+import { NavLink, useNavigate, useLocation  } from "react-router-dom";
 
-export default function Navbar({onSearch}) {
+export default function Navbar({ onSearch, toggleCart,cartState }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 const navigate = useNavigate();
+const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -104,6 +105,14 @@ const navigate = useNavigate();
     setIsSearchVisible(!isSearchVisible);
   };
 
+
+ function togglecart () {
+  toggleCart()
+  localStorage.removeItem("isCheckout");
+ }
+
+
+
   return (
     <nav className="fixed w-full z-20 top-0 start-0 bg-gray-100 border-gray-200 dark:bg-black ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
@@ -138,19 +147,19 @@ const navigate = useNavigate();
               </svg>
             </button>
           ) : (
-            <form onSubmit={handleSearchSubmit}>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                placeholder="Search products..."
-                className="pl-10 pr-4 py-2 w-64 border border-gray-400 rounded-lg focus:outline-none dark:bg-gray-800 dark:text-white"
-              />
-              <button
-                type="submit"
-                className="absolute inset-y-0 right-0 px-4 py-2 border border-gray-400 rounded-r-lg"
-              >
-                             <svg
+            <form onSubmit={handleSearchSubmit} className="flex items-center">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search products..."
+              className="pl-10 pr-4 py-2 w-64 border border-gray-400 rounded-l-lg focus:outline-none dark:bg-gray-800 dark:text-white"
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-white border border-gray-400 rounded-r-lg"
+            >
+              <svg
                 className="w-6 h-6 text-gray-800 dark:text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
@@ -166,9 +175,29 @@ const navigate = useNavigate();
                   d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
                 />
               </svg>
-              </button>
-            </form>
+            </button>
+          </form>
+          
           )}
+
+
+             <button onClick={togglecart} className="p-2 ml-2">
+              {!cartState ? (
+                             <img
+                             src="/icons/shopping-cart.png" 
+                             alt="Cart Icon"
+                             className="w-8 h-8" 
+                           />
+              ) : (
+                <svg className="me-1.5 h-8 w-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="#E02424" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
+              </svg>
+              
+              
+              )}
+
+          </button>
+
 
 <button
               id="theme-toggle"
@@ -248,12 +277,7 @@ const navigate = useNavigate();
             </li>
             
            
-            <NavLink
-              to="/shop"
-              className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-2 py-1  dark:bg-blue-600 dark:hover:bg-blue-700"
-            >
-              Shop
-            </NavLink>
+
 
   
  

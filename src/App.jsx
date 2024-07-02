@@ -8,31 +8,30 @@ import Contact from "./components/contact";
 import Footer from "./components/footer";
 import SearchResults from "./components/searchResults";
 import CategoryPage from "./components/CategoryPage";
+import ShoppingCart from "./components/shoppingCart";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [showShoppingCart, setShowShoppingCart] = useState(() => {
-    const storedCartState = localStorage.getItem("showShoppingCart");
-    return storedCartState ? storedCartState === "true" : false;
-  });
+
   const [cartItems, setCartItems] = useState(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
-
-
-  useEffect(() => {
-    localStorage.setItem("showShoppingCart", showShoppingCart.toString());
-  }, [showShoppingCart]);
+  const [isCartOpen, setIsCartOpen] = useState(() => {
+    const storedCartState = localStorage.getItem("isCartOpen");
+    return storedCartState ? JSON.parse(storedCartState) : false;
+  });
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  useEffect(() => {
+    localStorage.setItem("isCartOpen", JSON.stringify(isCartOpen));
+  }, [isCartOpen]);
 
   useEffect(() => {
-    // Check if there is a stored search query in localStorage
     const storedQuery = localStorage.getItem("searchQuery");
     if (storedQuery) {
       setSearchQuery(storedQuery);
@@ -40,46 +39,45 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Save the search query to localStorage
     localStorage.setItem("searchQuery", searchQuery);
   }, [searchQuery]);
-  
+
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
 
-  const toggleCart = () => {
-    setShowShoppingCart((prevState) => !prevState);
-  };
-  // Function to add item to cart
   const addToCart = (item) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
-      // If item already exists in cart, update quantity
       setCartItems(
         cartItems.map((cartItem) =>
           cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            ? {
+                ...cartItem,
+                quantity: cartItem.quantity + 1,
+                price: (cartItem.originalPrice || cartItem.price) * (cartItem.quantity + 1),
+              }
             : cartItem
         )
       );
     } else {
-      // Otherwise, add new item to cart
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      setCartItems([...cartItems, { ...item, quantity: 1, originalPrice: item.price }]);
     }
   };
 
-  // Function to remove item from cart
   const removeFromCart = (itemId) => {
     setCartItems(cartItems.filter((item) => item.id !== itemId));
   };
 
-  // Function to update quantity of item in cart
   const updateQuantity = (itemId, newQuantity) => {
     setCartItems(
       cartItems.map((item) =>
         item.id === itemId
-          ? { ...item, quantity: Math.max(newQuantity, 0) }
+          ? {
+              ...item,
+              quantity: Math.max(newQuantity, 0),
+              price: (item.originalPrice || item.price) * Math.max(newQuantity, 0),
+            }
           : item
       )
     );
@@ -88,44 +86,53 @@ function App() {
   return (
     <Router>
       <div className="bg-gray-100 dark:bg-black">
-        <NavBar
-          onSearch={handleSearch}
-          toggleCart={toggleCart}
-          showShoppingCart={showShoppingCart}
-        />
+        <NavBar onSearch={handleSearch} toggleCart={() => setIsCartOpen(!isCartOpen)} cartState={isCartOpen}/>
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                addToCart={addToCart}
-                cartItems={cartItems}
-                removeFromCart={removeFromCart}
-                updateQuantity={updateQuantity}
-                showShoppingCart={showShoppingCart}
-              />
-            }
+        {isCartOpen && (
+          <ShoppingCart
+            cartItems={cartItems}
+            removeFromCart={removeFromCart}
+            updateQuantity={updateQuantity}
+            closeCart={() => setIsCartOpen(false)}
           />
-          <Route
-            path="/search"
-            element={<SearchResults searchQuery={searchQuery} />}
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/category/:category"
-            element={
-              <CategoryPage
-                addToCart={addToCart}
-                cartItems={cartItems}
-                removeFromCart={removeFromCart}
-                updateQuantity={updateQuantity}
-                showShoppingCart={showShoppingCart}
-              />
-            }
-          />
-        </Routes>
+        )}
+
+        {!isCartOpen && (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  addToCart={addToCart}
+                  cartItems={cartItems}
+                />
+              }
+            />
+            <Route path="/search" element={<SearchResults searchQuery={searchQuery} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/category/:category"
+              element={
+                <CategoryPage
+                  addToCart={addToCart}
+                  cartItems={cartItems}
+                />
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <ShoppingCart
+                  cartItems={cartItems}
+                  removeFromCart={removeFromCart}
+                  updateQuantity={updateQuantity}
+                  closeCart={() => setIsCartOpen(false)}
+                />
+              }
+            />
+          </Routes>
+        )}
 
         <Footer />
       </div>

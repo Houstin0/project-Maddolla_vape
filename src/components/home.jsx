@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import productsData from "../db.json";
 import ProductCards from "./productCards";
 
-function Home({ addToCart, cartItems, removeFromCart, updateQuantity, showShoppingCart }) {
+function Home({ addToCart, cartItems }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState(""); // Define selectedCategory state
   const navigate = useNavigate();
@@ -171,9 +171,7 @@ function Home({ addToCart, cartItems, removeFromCart, updateQuantity, showShoppi
           products={productsData.products}
           addToCart={addToCart}
           cartItems={cartItems}
-          removeFromCart={removeFromCart}
-          updateQuantity={updateQuantity}
-          showShoppingCart={showShoppingCart}
+         
         />
       </section>
     </div>
