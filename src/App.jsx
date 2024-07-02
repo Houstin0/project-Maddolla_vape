@@ -1,6 +1,11 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import NavBar from "./components/navBar";
 import Home from "./components/home";
 import About from "./components/about";
@@ -10,26 +15,21 @@ import SearchResults from "./components/searchResults";
 import CategoryPage from "./components/CategoryPage";
 import ShoppingCart from "./components/shoppingCart";
 
+
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-
   const [cartItems, setCartItems] = useState(() => {
     const storedCartItems = localStorage.getItem("cartItems");
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
-  const [isCartOpen, setIsCartOpen] = useState(() => {
-    const storedCartState = localStorage.getItem("isCartOpen");
-    return storedCartState ? JSON.parse(storedCartState) : false;
-  });
+
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  useEffect(() => {
-    localStorage.setItem("isCartOpen", JSON.stringify(isCartOpen));
-  }, [isCartOpen]);
+
 
   useEffect(() => {
     const storedQuery = localStorage.getItem("searchQuery");
@@ -55,13 +55,18 @@ function App() {
             ? {
                 ...cartItem,
                 quantity: cartItem.quantity + 1,
-                price: (cartItem.originalPrice || cartItem.price) * (cartItem.quantity + 1),
+                price:
+                  (cartItem.originalPrice || cartItem.price) *
+                  (cartItem.quantity + 1),
               }
             : cartItem
         )
       );
     } else {
-      setCartItems([...cartItems, { ...item, quantity: 1, originalPrice: item.price }]);
+      setCartItems([
+        ...cartItems,
+        { ...item, quantity: 1, originalPrice: item.price },
+      ]);
     }
   };
 
@@ -76,7 +81,8 @@ function App() {
           ? {
               ...item,
               quantity: Math.max(newQuantity, 0),
-              price: (item.originalPrice || item.price) * Math.max(newQuantity, 0),
+              price:
+                (item.originalPrice || item.price) * Math.max(newQuantity, 0),
             }
           : item
       )
@@ -86,38 +92,29 @@ function App() {
   return (
     <Router>
       <div className="bg-gray-100 dark:bg-black">
-        <NavBar onSearch={handleSearch} toggleCart={() => setIsCartOpen(!isCartOpen)} cartState={isCartOpen}/>
+        <NavBar
+          onSearch={handleSearch}
+          cartItems={cartItems}
+        />
 
-        {isCartOpen && (
-          <ShoppingCart
-            cartItems={cartItems}
-            removeFromCart={removeFromCart}
-            updateQuantity={updateQuantity}
-            closeCart={() => setIsCartOpen(false)}
-          />
-        )}
+      
 
-        {!isCartOpen && (
+        
           <Routes>
             <Route
               path="/"
-              element={
-                <Home
-                  addToCart={addToCart}
-                  cartItems={cartItems}
-                />
-              }
+              element={<Home addToCart={addToCart} cartItems={cartItems} />}
             />
-            <Route path="/search" element={<SearchResults searchQuery={searchQuery} />} />
+            <Route
+              path="/search"
+              element={<SearchResults searchQuery={searchQuery} />}
+            />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route
               path="/category/:category"
               element={
-                <CategoryPage
-                  addToCart={addToCart}
-                  cartItems={cartItems}
-                />
+                <CategoryPage addToCart={addToCart} cartItems={cartItems} />
               }
             />
             <Route
@@ -127,12 +124,12 @@ function App() {
                   cartItems={cartItems}
                   removeFromCart={removeFromCart}
                   updateQuantity={updateQuantity}
-                  closeCart={() => setIsCartOpen(false)}
+                 
                 />
               }
             />
           </Routes>
-        )}
+      
 
         <Footer />
       </div>

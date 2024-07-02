@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Checkout({
   cartItems,
@@ -25,6 +25,11 @@ function Checkout({
     // Handle form submission logic here
     console.log(formData);
   };
+
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="container mt-12 mx-auto p-4">

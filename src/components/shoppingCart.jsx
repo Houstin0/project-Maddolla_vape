@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Checkout from "./Checkout";
 
 
-function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity,closeCart }) {
+function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity }) {
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(true);
+  const navigate = useNavigate();
     // Calculate the total original price and total cost
     const totalOriginalPrice = cartItems.reduce((total, item) => total + (item.originalPrice || item.price) * item.quantity, 0);
     const totalCost = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
+  // Load cart open state from local storage on component mount
+  useEffect(() => {
+    const storedCartOpen = localStorage.getItem("isCartOpen");
+    setIsCartOpen(storedCartOpen === "true");
+  }, []);
     // Load checkout state from local storage on component mount
     useEffect(() => {
       const savedIsCheckout = localStorage.getItem("isCheckout");
@@ -16,6 +23,15 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity,clo
       }
     }, []);
   
+    useEffect(() => {
+      // Scroll to the top when the component mounts
+      window.scrollTo(0, 0);
+    }, []);
+      // Save cart open state to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("isCartOpen", isCartOpen.toString());
+  }, [isCartOpen]);
+
     // Save checkout state to local storage whenever it changes
     useEffect(() => {
       localStorage.setItem("isCheckout", isCheckout.toString());
@@ -24,11 +40,13 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity,clo
     const handleProceedToCheckout = () => {
       setIsCheckout(true);
     };
-    const handleCloseCart = () => {
-      setIsCheckout(false);
-      localStorage.removeItem("isCheckout");
-      closeCart();
+
+    const closeCart = () => {
+      setIsCartOpen(false); // Close the cart
+      setIsCheckout(false)
+      navigate(localStorage.getItem("previousLocation") || "/");
     };
+  
   
     if (isCheckout) {
       return <Checkout cartItems={cartItems} totalOriginalPrice={totalOriginalPrice} totalCost={totalCost} navigateToCart={()=>setIsCheckout(false)} />;
@@ -81,13 +99,14 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity,clo
             
               
                      <button onClick={() => removeFromCart(item.id)} type="button" className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
-                       <svg className="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"WstrokeWidth="24" height="24" fill="none" viewBox="0 0 24 24">
+                       <svg className="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"strokeWidth="24" height="24" fill="none" viewBox="0 0 24 24">
                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
                        </svg>
                        Remove
                      </button>
                   </div>
-                </div>              </div>
+                </div>              
+                </div>
               </li> 
                 ))}
               </ul>
@@ -121,8 +140,8 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity,clo
 
           <div className="flex items-center justify-center gap-2">
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
-            <button onClick={handleCloseCart} className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
-              Continue Shopping
+            <button onClick={closeCart} className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
+              Close Cart and Continue Shopping
               <svg className="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
               </svg>

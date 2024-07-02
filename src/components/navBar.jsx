@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate, useLocation  } from "react-router-dom";
 import productsData from "../db.json";
 
-export default function Navbar({ onSearch, toggleCart,cartState }) {
+export default function Navbar({ onSearch, cartItems }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(() => {
+    const storedCartOpen = localStorage.getItem("isCartOpen");
+    return storedCartOpen === "true";
+  });
+  const [previousLocation, setPreviousLocation] = useState(() => {
+    return localStorage.getItem("previousLocation");
+  });
 const navigate = useNavigate();
 const location = useLocation();
 
@@ -87,6 +94,20 @@ const location = useLocation();
     setSearchSuggestions(productTitles);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("isCartOpen", isCartOpen);
+  }, [isCartOpen]);
+
+  useEffect(() => {
+    localStorage.setItem("previousLocation", previousLocation);
+  }, [previousLocation])
+
+  useEffect(() => {
+    if (location.pathname !== "/cart") {
+      setIsCartOpen(false);
+    }
+  }, [location.pathname]);
+
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
@@ -121,12 +142,34 @@ const location = useLocation();
   };
 
 
- function togglecart () {
-  toggleCart()
-  localStorage.removeItem("isCheckout");
- }
 
 
+
+ 
+ 
+
+  const toggleCart = () => {
+
+    if (!isCartOpen) {
+      setPreviousLocation(location.pathname);
+      setIsCartOpen(true);
+      navigate("/cart"); // Navigate to the cart page
+      
+    } else {
+      setIsCartOpen(false);
+      
+      navigate(previousLocation || "/"); // Navigate back to the previous location or home if none
+      localStorage.setItem("isCheckout", false );
+    }
+  };
+
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  useEffect(() => {
+    // Calculate total items in cart
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+    setCartItemCount(totalItems);
+  }, [cartItems]);
 
   return (
     <nav className="fixed w-full z-20 top-0 start-0 bg-gray-100 border-gray-200 dark:bg-black ">
@@ -168,11 +211,11 @@ const location = useLocation();
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search products..."
-              className="pl-10 pr-4 py-2 w-64 border border-gray-400 rounded-l-lg focus:outline-none dark:bg-gray-800 dark:text-white"
+              className="pl-10 pr-4 py-2 w-64 md:w-[500px] border border-gray-200 rounded-l-lg focus:outline-none dark:bg-gray-800 dark:text-white"
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-white border border-gray-400 rounded-r-lg"
+              className="px-4 py-2 bg-transparent border border-gray-400 rounded-r-lg"
             >
               <svg
                 className="w-6 h-6 text-gray-800 dark:text-white"
@@ -194,7 +237,7 @@ const location = useLocation();
           
             {/* Autocomplete suggestions dropdown */}
             {searchQuery.length > 0 && (
-              <div className="absolute w-64 bg-white border border-gray-300 rounded-lg shadow-lg z-10 left-0 top-full max-h-64 overflow-y-auto">
+              <div className="absolute w-64 md:w-[500px] bg-white border border-gray-300 rounded-lg shadow-lg z-10 left-0 top-full max-h-64 overflow-y-auto">
                 {searchSuggestions.map((suggestion, index) => (
                   <div
                     key={index}
@@ -219,22 +262,44 @@ const location = useLocation();
           )}
 
 
-             <button onClick={togglecart} className="p-2 ml-2">
-              {!cartState ? (
-                             <img
-                             src="/icons/shopping-cart.png" 
-                             alt="Cart Icon"
-                             className="w-8 h-8" 
-                           />
-              ) : (
-                <svg className="me-1.5 h-8 w-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="#E02424" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
-              </svg>
-              
-              
-              )}
+<button onClick={toggleCart} className="relative p-2 ml-2">
+  {!isCartOpen ? (
+    <div>
+  <img
+      src="/icons/shopping-cart.png" 
+      alt="Cart Icon"
+      className="w-8 h-8"
+    />
+    {cartItemCount > 0 && (
+      <span className="absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-green-400 rounded-full flex items-center justify-center text-white text-xs">
+        {cartItemCount}
+      </span>
+    )}
+    </div>
+  
+  ) : (
+    <svg
+      className="me-1.5 h-8 w-8"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="#E02424"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M6 18 17.94 6M18 18 6.06 6"
+      />
+    </svg>
+  )}
 
-          </button>
+
+</button>
+
 
 
 <button

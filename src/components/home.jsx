@@ -25,7 +25,7 @@ function Home({ addToCart, cartItems }) {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 6000);
     return () => clearInterval(interval);
   }, []);
 
