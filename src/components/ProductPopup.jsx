@@ -46,19 +46,19 @@ function ProductPopup({ product, onClose, addToCart }) {
 
       
         <button
-          className="absolute top-1 right-2 p-3"
+          className="absolute top-0 right-0 p-3"
           onClick={onClose}
           aria-label="Close"
         >
              <svg className="me-1.5 h-10 w-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="#E02424" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                <path stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
               </svg>
         </button>
         <section className={`my-8 md:my-12 dark:bg-gray-900 antialiased ${scrollable ? 'overflow-y-auto hide-scrollbar' : ''}`} ref={scrollContainerRef}>
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
               <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
-                <img className="w-full" src={product.image} alt={product.title} />
+                <img className="w-full max-h-[440px]" src={product.image} alt={product.title} />
               </div>
               <div className="mt-6 sm:mt-8 lg:mt-0">
                 <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
