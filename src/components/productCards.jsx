@@ -23,11 +23,11 @@ function ProductCards({ products ,addToCart}) {
   }, [selectedProduct]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center mx-4 lg:mx-12 mb-6">
       {products.map((product) => (
         <div
         key={product.id}
-        className="max-w-sm bg-gray-200 border border-gray-400 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-4 my-4"
+        className="max-w-sm bg-gray-200 border border-gray-400 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700"
         onClick={() => openPopup(product)} 
       >
           {/* Product Image */}

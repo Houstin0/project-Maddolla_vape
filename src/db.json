@@ -2,39 +2,18 @@
   "ads": [
     {
       "id": 1,
-      "title": "Ad Phone & tablets",
-      "image": "/assets/vapes_2.jpg"
+      "title": "Ad_1",
+      "image": "/ads/Ad_1.png"
     },
     {
       "id": 2,
-      "title": "Ad Sporting goods",
-      "image": "/images/ads/ad pics (19).png"
-    
+      "title": "Ad_2",
+      "image": "/ads/Ad_2.png"
     },
     {
       "id": 3,
-      "title": "Ad TVs & audio",
-      "image": "/images/ads/ad pics (3).png"
-    },
-    {
-      "id": 4,
-      "title": "Ad Appliances",
-      "image": "/images/ads/ad pics (4).png"
-    },
-    {
-      "id": 5,
-      "title": "Ad Health & beauty",
-      "image": "/images/ads/ad pics (6).png"
-    },
-    {
-      "id": 6,
-      "title": "Ad Baby Products",
-      "image": "/images/ads/ad pics (16).png"
-    },
-    {
-      "id": 7,
-      "title": "Ad Health & beauty",
-      "image": "/images/ads/ad pics (7).png"
+      "title": "Ad_3",
+      "image": "/ads/Ad_3.png"
     }
   ],
 

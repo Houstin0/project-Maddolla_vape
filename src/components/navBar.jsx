@@ -173,12 +173,12 @@ const location = useLocation();
 
   return (
     <nav className="fixed w-full z-20 top-0 start-0 bg-gray-100 border-gray-200 dark:bg-black ">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+      <div className="w-full flex flex-wrap items-center justify-between mx-auto p-1">
       <NavLink
           to="/"
-          className="italic text-black text-2xl font-extrabold dark:text-white flex items-center space-x-3 rtl:space-x-reverse"
+          className="italic text-[#0A005A] text-2xl font-extrabold ml-2 lg:ml-10 flex items-center space-x-2 rtl:space-x-reverse"
         >
-          Madolla vape
+          Madolla <span className="ml-2 text-[#FC411E] "> vape</span> 
         </NavLink>
 
         <div className="ml-auto mr-2 flex items-center space-x-2">
@@ -215,7 +215,7 @@ const location = useLocation();
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-transparent border border-gray-400 rounded-r-lg"
+              className="px-4 py-2 bg-[#FC411E] border border-gray-400 rounded-r-lg"
             >
               <svg
                 className="w-6 h-6 text-gray-800 dark:text-white"
@@ -271,7 +271,7 @@ const location = useLocation();
       className="w-8 h-8"
     />
     {cartItemCount > 0 && (
-      <span className="absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-green-400 rounded-full flex items-center justify-center text-white text-xs">
+      <span className="absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#FC411E] rounded-full flex items-center justify-center text-[#0A005A] text-xs">
         {cartItemCount}
       </span>
     )}
