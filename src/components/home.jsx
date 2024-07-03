@@ -173,8 +173,8 @@ function Home({ addToCart, cartItems }) {
                 key={index}
                 className={`mx-1 px-3 py-1 font-semibold text-sm sm:text-base rounded  text-gray-900 dark:text-white ${
                   selectedCategory === category
-                    ? "bg-gray-500"
-                    : "bg-gray-300 dark:bg-gray-800"
+                    ? "bg-[#FC411E]"
+                    : "bg-gray-300 dark:bg-gray-900"
                 }`}
                 onClick={() => handleCategoryClick(category)}
               >

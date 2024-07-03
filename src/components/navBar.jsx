@@ -211,11 +211,11 @@ const location = useLocation();
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search products..."
-              className="pl-10 pr-4 py-2 w-64 md:w-[500px] border border-gray-200 rounded-l-lg focus:outline-none dark:bg-gray-800 dark:text-white"
+              className="pl-10 pr-4 py-2 w-64 md:w-[500px] border border-[#0A005A] dark:border-black rounded-l-lg focus:outline-none dark:bg-gray-800 dark:text-white"
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-[#FC411E] border border-gray-400 rounded-r-lg"
+              className="px-4 py-2 bg-[#FC411E]  rounded-r-lg"
             >
               <svg
                 className="w-6 h-6 text-gray-800 dark:text-white"
@@ -271,7 +271,7 @@ const location = useLocation();
       className="w-8 h-8"
     />
     {cartItemCount > 0 && (
-      <span className="absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#FC411E] rounded-full flex items-center justify-center text-[#0A005A] text-xs">
+      <span className="absolute top-2 right-2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#FC411E] rounded-full flex items-center justify-center text-black text-xs">
         {cartItemCount}
       </span>
     )}

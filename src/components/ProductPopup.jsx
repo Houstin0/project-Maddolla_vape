@@ -42,7 +42,7 @@ function ProductPopup({ product, onClose, addToCart }) {
 
   return (
     <div className="mt-14 py-2 fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-30">
-      <div className="relative bg-white dark:bg-gray-900 w-full mx-5 md:mx-0 md:w-5/6 max-h-full rounded-lg overflow-y-auto hide-scrollbar">
+      <div className="relative bg-gray-100 dark:bg-gray-900 w-full mx-5 md:mx-0 md:w-5/6 max-h-full rounded-lg overflow-y-auto hide-scrollbar">
 
       
         <button

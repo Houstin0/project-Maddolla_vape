@@ -29,15 +29,15 @@ function CategoryPage({ addToCart, cartItems}) {
             to={`/category/${cat}`}
             className={`px-2 py-2 md:px-4 md:py-2 font-semibold rounded-md text-gray-900 dark:text-white ${
               cat === category
-                ? "bg-gray-500 dark:bg-gray-800"
-                : "bg-gray-400 dark:bg-gray-700"
+                ? "bg-[#FC411E]"
+                : "bg-gray-300 dark:bg-gray-900"
             }`}
           >
             {cat}
           </Link>
         ))}
       </div>
-      <h2 className="text-3xl font-bold ml-6 text-black dark:text-white">
+      <h2 className="text-3xl font-bold ml-12 text-[#0A005A] dark:text-[#FC411E]">
         {category}
       </h2>
       <section id="products" className="w-full mt-4">

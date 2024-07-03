@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="bg-gray-200 py-8 antialiased dark:bg-gray-900 md:py-16">
+    <section className="bg-gray-200 antialiased dark:bg-gray-900 pb-6 pt-16 mx-4 md:mx-12">
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <div className="mx-auto max-w-5xl">
           <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl flex items-center justify-center">

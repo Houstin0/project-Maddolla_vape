@@ -27,7 +27,7 @@ function ProductCards({ products ,addToCart}) {
       {products.map((product) => (
         <div
         key={product.id}
-        className="max-w-sm bg-gray-200 border border-gray-400 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700"
+        className="max-w-sm bg-gray-300 rounded-lg shadow dark:bg-gray-900"
         onClick={() => openPopup(product)} 
       >
           {/* Product Image */}

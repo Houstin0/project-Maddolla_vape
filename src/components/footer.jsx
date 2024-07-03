@@ -18,12 +18,12 @@ export default function Footer() {
 
     
 
-<footer className="bg-white rounded-lg shadow dark:bg-gray-900 m-4 mx-12">
+<footer className="bg-gray-300 rounded-lg shadow dark:bg-gray-900 m-4 md:mx-12">
     <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
                <a
           href="/"
-          className="italic text-[#0A005A] text-2xl font-extrabold lg:ml-4 flex items-center space-x-2 rtl:space-x-reverse"
+          className="italic text-[#0A005A] mb-8 text-2xl font-extrabold lg:ml-4 flex items-center space-x-2 rtl:space-x-reverse"
         >
           Madolla <span className="ml-2 text-[#FC411E] "> vape</span> 
         </a>
