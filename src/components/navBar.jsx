@@ -122,18 +122,19 @@ const location = useLocation();
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     if (searchQuery.trim() === "") {
-      navigate("/");
+      // navigate("/");
                         // Hide the search bar after search
                         setIsSearchVisible(false);
     } else {
       onSearch(searchQuery);
+      setIsSearchVisible(false);
       // Navigate to search results page
       navigate("/search");
             // Clear the search query
             setSearchQuery("");
 
-                  // Hide the search bar after search
-      setIsSearchVisible(false);
+                  
+      
     }
   };
   
