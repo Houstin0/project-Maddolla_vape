@@ -163,7 +163,7 @@ function Home({ addToCart, cartItems }) {
 
         {/* Category List */}
         <div className="w-full lg:w-1/2 lg:ml-4 mt-2 lg:mt-0 mb-2">
-          <h2 className="text-2xl font-bold mb-2 text-center text-[#0A005A] ">
+          <h2 className="text-2xl font-bold mb-2 text-center text-[#0A005A] dark:text-[#FC411E] ">
             Categories
           </h2>
 
