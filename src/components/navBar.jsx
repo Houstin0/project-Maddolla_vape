@@ -306,7 +306,7 @@ const location = useLocation();
               id="theme-toggle"
               type="button"
               onClick={toggleDarkMode}
-              className=" text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700  rounded-lg text-sm p-1"
+              className=" text-gray-500 dark:text-gray-400  lg:hover:bg-gray-200 lg:dark:hover:bg-gray-700  rounded-lg text-sm p-1"
             >
               <svg
                 id="theme-toggle-dark-icon"
