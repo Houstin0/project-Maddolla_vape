@@ -1,9 +1,9 @@
 # VapeHub
 
 ## Description
-VapeHub is an e-commerce web application designed for selling vape pens. It aims to provide a seamless and user-friendly platform where customers can browse and purchase vape pens without the need to log in.
+Madolla Vape is an e-commerce web application designed for selling vape pens. It aims to provide a seamless and user-friendly platform where customers can browse and purchase vape pens without the need to log in.
 
-The app has been deployed, to visit it follow the link: [VapeHub](https://vapehub.onrender.com).
+The app has been deployed, to visit it follow the link: [Madolla Vape](https://maddolla-vape.onrender.com/).
 
 ## Features
 - **Product Browsing**: Users can view and explore various vape pens available for purchase.
@@ -17,15 +17,15 @@ The app has been deployed, to visit it follow the link: [VapeHub](https://vapehu
 - React
 - Tailwind CSS
 
-### Backend:
-- Appwrite
+<!-- ### Backend:
+- Appwrite -->
 
 ## Installation & Setup
 Follow these steps to set up and run the app on your local machine:
 
 1. **Clone the Repository**: Clone this repository to your local machine.
     ```bash
-    git clone https://github.com/yourusername/vapehub.git
+    git clone
     ```
 
 2. **Install Dependencies**:
@@ -38,7 +38,7 @@ Follow these steps to set up and run the app on your local machine:
 3. **Start the App**:
     - Run the development server to start the application.
     ```bash
-    npm start
+    npm run dev
     ```
 
 4. **Setup Backend**:
