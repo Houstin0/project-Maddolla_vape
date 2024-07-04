@@ -1,7 +1,7 @@
 # Madolla Vape
 
 ## Description
-Madolla Vape is an e-commerce website designed to make vape pens available to users anywhere at anytime. It aims to provide a seamless and user-friendly platform where customers can browse and purchase vape pens without the need to log in.
+Madolla Vape is an e-commerce website designed to provide a user-friendly and accessible online store where customers can easily find and purchase high-quality vape pens without the need to log in. The project aims to increase market reach and provide a seamless shopping experience that encourages repeat business and customer satisfaction.
 
 The app has been deployed, to visit it follow the link: [Madolla Vape](https://maddolla-vape.onrender.com/).
 
