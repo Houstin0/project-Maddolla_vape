@@ -14,7 +14,7 @@ import Footer from "./components/footer";
 import SearchResults from "./components/searchResults";
 import CategoryPage from "./components/CategoryPage";
 import ShoppingCart from "./components/shoppingCart";
-
+import Banner from "./components/banner";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,13 +23,9 @@ function App() {
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
-
-
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-
-
 
   useEffect(() => {
     const storedQuery = localStorage.getItem("searchQuery");
@@ -92,46 +88,42 @@ function App() {
   return (
     <Router>
       <div className="bg-gray-100 dark:bg-black">
-        <NavBar
-          onSearch={handleSearch}
-          cartItems={cartItems}
-        />
+<Banner/>
+       
 
-      
+        <NavBar onSearch={handleSearch} cartItems={cartItems} />
 
-        
-          <Routes>
-            <Route
-              path="/"
-              element={<Home addToCart={addToCart} cartItems={cartItems} />}
-            />
-            <Route
-              path="/search"
-              element={<SearchResults searchQuery={searchQuery} />}
-            />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/category/:category"
-              element={
-                <CategoryPage addToCart={addToCart} cartItems={cartItems} />
-              }
-            />
-            <Route
-              path="/cart"
-              element={
-                <ShoppingCart
-                  cartItems={cartItems}
-                  removeFromCart={removeFromCart}
-                  updateQuantity={updateQuantity}
-                 
-                />
-              }
-            />
-          </Routes>
-      
+        <Routes>
+          <Route
+            path="/"
+            element={<Home addToCart={addToCart} cartItems={cartItems} />}
+          />
+          <Route
+            path="/search"
+            element={<SearchResults searchQuery={searchQuery} />}
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/category/:category"
+            element={
+              <CategoryPage addToCart={addToCart} cartItems={cartItems} />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ShoppingCart
+                cartItems={cartItems}
+                removeFromCart={removeFromCart}
+                updateQuantity={updateQuantity}
+              />
+            }
+          />
+        </Routes>
 
         <Footer />
+      
       </div>
     </Router>
   );
