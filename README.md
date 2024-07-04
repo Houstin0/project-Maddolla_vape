@@ -1,4 +1,4 @@
-# VapeHub
+# Madolla Vape
 
 ## Description
 Madolla Vape is an e-commerce website designed to make vape pens available to users anywhere at anytime. It aims to provide a seamless and user-friendly platform where customers can browse and purchase vape pens without the need to log in.
