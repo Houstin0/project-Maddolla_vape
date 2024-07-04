@@ -3,17 +3,17 @@
     {
       "id": 1,
       "title": "Ad_1",
-      "image": "/ads/Ad_1.png"
+      "image": "/ads/Ad_2.png"
     },
     {
       "id": 2,
       "title": "Ad_2",
-      "image": "/ads/Ad_2.png"
+      "image": "/ads/Ad_3.png"
     },
     {
       "id": 3,
       "title": "Ad_3",
-      "image": "/ads/Ad_3.png"
+      "image": "/ads/Ad_1.png"
     }
   ],
 
