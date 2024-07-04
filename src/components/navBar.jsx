@@ -4,7 +4,6 @@ import productsData from "../db.json";
 
 export default function Navbar({ onSearch, cartItems }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -22,71 +21,12 @@ const location = useLocation();
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleDarkMode = () => {
-    // Update isDarkMode state immediately
-    setIsDarkMode((prev) => !prev);
 
-    // Use the updated isDarkMode state
-    const updatedIsDarkMode = !isDarkMode;
+   
 
-    if (typeof window !== "undefined") {
-      const themeToggleDarkIcon = document.getElementById(
-        "theme-toggle-dark-icon"
-      );
-      const themeToggleLightIcon = document.getElementById(
-        "theme-toggle-light-icon"
-      );
+ 
 
-      if (updatedIsDarkMode) {
-        document.documentElement.style.backgroundColor = "var(--bg-color-dark)";
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("color-theme", "dark");
-        themeToggleDarkIcon.classList.add("hidden");
-        themeToggleLightIcon.classList.remove("hidden");
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.style.backgroundColor = "var(--bg-color-light)";
-        localStorage.setItem("color-theme", "light");
-        themeToggleDarkIcon.classList.remove("hidden");
-        themeToggleLightIcon.classList.add("hidden");
-      }
-    }
-  };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isDark = localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
-      setIsDarkMode(isDark);
-
-      // Apply the dark mode settings on initial load
-      if (isDark) {
-        document.documentElement.classList.add("dark");
-        document.documentElement.style.backgroundColor = "var(--bg-color-dark)";
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.style.backgroundColor = "var(--bg-color-light)";
-      }
-    }
-  }, []);
-
-  // Check isDarkMode initially and set visibility for icons
-  useEffect(() => {
-    const themeToggleDarkIcon = document.getElementById(
-      "theme-toggle-dark-icon"
-    );
-    const themeToggleLightIcon = document.getElementById(
-      "theme-toggle-light-icon"
-    );
-
-    if (isDarkMode) {
-      themeToggleDarkIcon.classList.add("hidden");
-      themeToggleLightIcon.classList.remove("hidden");
-    } else {
-      themeToggleDarkIcon.classList.remove("hidden");
-      themeToggleLightIcon.classList.add("hidden");
-    }
-  }, [isDarkMode]);
 
   useEffect(() => {
     // Fetch data and initialize search suggestions
@@ -344,7 +284,7 @@ const location = useLocation();
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 mr-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-gray-100 dark:bg-black md:dark:bg-black dark:border-gray-700">
             <li>
-            <button
+            {/* <button
               id="theme-toggle"
               type="button"
               onClick={toggleDarkMode}
@@ -372,7 +312,7 @@ const location = useLocation();
                   clipRule="evenodd"
                 ></path>
               </svg>
-            </button>
+            </button> */}
             </li>
             {/* <li>
               <NavLink
