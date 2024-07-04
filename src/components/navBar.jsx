@@ -37,18 +37,18 @@ const location = useLocation();
         "theme-toggle-light-icon"
       );
 
-      if (!updatedIsDarkMode) {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.style.backgroundColor = "var(--bg-color-light)";
-        localStorage.setItem("color-theme", "light");
-        themeToggleDarkIcon.classList.remove("hidden");
-        themeToggleLightIcon.classList.add("hidden");
-      } else {
+      if (updatedIsDarkMode) {
         document.documentElement.style.backgroundColor = "var(--bg-color-dark)";
         document.documentElement.classList.add("dark");
         localStorage.setItem("color-theme", "dark");
         themeToggleDarkIcon.classList.add("hidden");
         themeToggleLightIcon.classList.remove("hidden");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.backgroundColor = "var(--bg-color-light)";
+        localStorage.setItem("color-theme", "light");
+        themeToggleDarkIcon.classList.remove("hidden");
+        themeToggleLightIcon.classList.add("hidden");
       }
     }
   };
