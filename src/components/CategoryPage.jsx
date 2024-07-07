@@ -21,7 +21,7 @@ function CategoryPage({ addToCart, cartItems}) {
   ];
 
   return (
-    <div className="flex flex-col mt-16">
+    <div className="flex flex-col mt-14">
       <div className="flex flex-wrap items-center justify-center gap-2 mb-1 h-full py-3 mx-4 rounded-lg ">
         {categories.map((cat) => (
           <Link

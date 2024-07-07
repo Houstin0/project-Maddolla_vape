@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Checkout({
   cartItems,
   totalOriginalPrice,
   totalCost,
   navigateToCart,
+  emptyCart,
+  closeCheckout
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -20,10 +26,17 @@ function Checkout({
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
     console.log(formData);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    emptyCart()
+    closeCheckout()
+    navigate('/');
   };
 
   useEffect(() => {
@@ -213,7 +226,7 @@ function Checkout({
                 onChange={handleInputChange}  
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0712345678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                pattern="[0-9]{10}"
                 required
               />
             </div>
@@ -287,6 +300,51 @@ function Checkout({
           </button>
         </form>
       </div>
+        {/* Success Modal */}
+  {isModalOpen && (
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+      <div className="relative w-auto max-w-lg mx-auto my-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg relative flex flex-col p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+              Order Placed Successfully!
+            </h3>
+            <button
+              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+              onClick={closeModal}
+            >
+              <svg
+                className="w-6 h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <p className="text-base text-gray-700 dark:text-gray-300">
+            Thank you for your order! Your order has been successfully placed.
+          </p>
+          <div className="mt-6">
+            <button
+              onClick={closeModal}
+              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-medium transition duration-300"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+
     </div>
   );
 }

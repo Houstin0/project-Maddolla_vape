@@ -100,7 +100,7 @@ function App() {
           />
           <Route
             path="/search"
-            element={<SearchResults searchQuery={searchQuery} />}
+            element={<SearchResults searchQuery={searchQuery} addToCart={addToCart}/>}
           />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -117,6 +117,7 @@ function App() {
                 cartItems={cartItems}
                 removeFromCart={removeFromCart}
                 updateQuantity={updateQuantity}
+                emptyCart={()=>setCartItems([])}
               />
             }
           />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import productsData from "../db.json";
 import ProductCards from "./productCards";
 
-export default function SearchResults({ searchQuery }) {
+export default function SearchResults({ searchQuery , addToCart }) {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function SearchResults({ searchQuery }) {
   }, [searchQuery]);
 
   return (
-    <div className="mt-16">
+    <div className="mt-14">
       
       <div>
         <nav className="flex ml-4 lg:ml-12 mb-2" aria-label="Breadcrumb ">
@@ -69,7 +69,7 @@ export default function SearchResults({ searchQuery }) {
           <h1 className="mb-6 text-center text-2xl font-extrabold text-[#0A005A] dark:text-[#FC411E]">
             Search Results for<span className="text-[#FC411E]"> &quot;{searchQuery}&quot;</span> 
           </h1>
-          <ProductCards products={searchResults} />
+          <ProductCards products={searchResults} addToCart={addToCart} />
         </div>
       )}
     </div>

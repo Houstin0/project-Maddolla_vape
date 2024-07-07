@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Checkout from "./Checkout";
 
 
-function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity }) {
+function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity, emptyCart }) {
   const [isCheckout, setIsCheckout] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(true);
   const navigate = useNavigate();
@@ -46,10 +46,15 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity }) 
       setIsCheckout(false)
       navigate(localStorage.getItem("previousLocation") || "/");
     };
+
+    function closeCheckout () {
+      setIsCheckout(false)
+      localStorage.removeItem("isCheckout")
+    }
   
   
     if (isCheckout) {
-      return <Checkout cartItems={cartItems} totalOriginalPrice={totalOriginalPrice} totalCost={totalCost} navigateToCart={()=>setIsCheckout(false)} />;
+      return <Checkout cartItems={cartItems} totalOriginalPrice={totalOriginalPrice} totalCost={totalCost} navigateToCart={()=>setIsCheckout(false)} emptyCart={emptyCart} closeCheckout={closeCheckout}  />;
     }
 
   return (
@@ -206,7 +211,7 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity }) 
        
       </div>
 
-      <div className="hidden xl:mt-8 xl:block">
+      {/* <div className="hidden xl:mt-8 xl:block">
           <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">People also bought</h3>
           <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
             <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
@@ -235,7 +240,7 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity }) 
                   <div className="tooltip-arrow" data-popper-arrow></div>
                 </div>
                 <button type="button" className="inline-flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium  text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                  <svg className="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"WstrokeWidth="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <svg className="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"strokeWidth="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7h-1M8 7h-.688M13 5v4m-2-2h4" />
                   </svg>
                   Add to cart
@@ -310,7 +315,7 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity }) 
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
     
 
       

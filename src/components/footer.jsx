@@ -33,7 +33,7 @@ export default function Footer() {
           About Us
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/privacy-policy" onClick={scrollToTop} className="hover:underline me-4 md:me-6">
           Privacy Policy
         </NavLink>
@@ -42,7 +42,7 @@ export default function Footer() {
         <NavLink to="/licensing" onClick={scrollToTop} className="hover:underline me-4 md:me-6">
           Licensing
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/contact" onClick={scrollToTop} className="hover:underline">
           Contact Us
