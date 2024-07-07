@@ -56,11 +56,10 @@ export default function Footer() {
           </ul>
         </div>
 
-       
-<ul className="flex justify-center space-x-4 mt-4">
-<h3 className="font-semibold">Follow Us on:</h3>
-          
-            <a
+        <ul className="flex justify-center space-x-4 mt-4">
+          <h3 className="font-semibold">Follow Us on:</h3>
+
+          <a
             href="#"
             className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
           >
@@ -83,8 +82,7 @@ export default function Footer() {
 
             <span className="sr-only">Instagram page</span>
           </a>
-          
-          
+
           <a
             href="#"
             className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
@@ -104,8 +102,7 @@ export default function Footer() {
             </svg>
             <span className="sr-only">Facebook page</span>
           </a>
-          
-          
+
           <a
             href="#"
             className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
@@ -125,11 +122,7 @@ export default function Footer() {
             </svg>
             <span className="sr-only">Twitter page</span>
           </a>
-          
         </ul>
-
-      
-
 
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <span
