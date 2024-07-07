@@ -17,149 +17,140 @@
     }
   ],
 
-
-  
-  
-    "products": [
-      {
-        "id": 1,
-        "title": "Product 1",
-        "image": "/vape_products/vape_1.jpg",
-        "description": "Description of Product 1",
-        "rating": 4,
-        "categories": ["Pod devices", "Accessories"],
-        "price": 2300,
-        "flavours": [
-          "Triple berry ice",
-          "Bluerazz ice",
-          "Cranberry grape",
-          "Rainbow candy"
-        ]
-      },
-      {
-        "id": 2,
-        "title": "Product 2",
-        "image": "/vape_products/vape_11.jpg",
-        "description": "Description of Product 2",
-        "rating": 4,
-        "categories": ["Dry herb", "Pipes"],
-        "price": 2300,
-        "flavours": [
-          "Energy",
-          "Mango peach",
-          "Sakura grape",
-          "Watermelon bubblegum"
-        ]
-      },
-      {
-        "id": 3,
-        "title": "ElfBar 5000puffs",
-        "image": "/vape_products/vape2.jpg",
-        "description": "Description of ElfBar 5000puffs",
-        "rating": 4,
-        "categories": ["Pod mods", "E-liquids"],
-        "price": 2300,
-        "flavours": [
-          "Triple berry ice",
-          "Bluerazz ice",
-          "Cranberry grape",
-          "Rainbow candy",
-          "Energy",
-          "Mango peach",
-          "Sakura grape",
-          "Watermelon bubblegum"
-        ]
-      },
-      {
-        "id": 4,
-        "title": "Apple ",
-        "image": "/vape_products/vape3.jpg",
-        "description": "Description of Apple Watch Series 7",
-        "rating": 4,
-        "categories": ["Disposables", "Nic salts"],
-        "price": 2300,
-        "flavours": [
-          "Triple berry ice",
-          "Bluerazz ice",
-          "Cranberry grape",
-          "Watermelon bubblegum"
-        ]
-      },
-      {
-        "id": 5,
-        "title": "Vapokiss",
-        "image": "/vape_products/vape4.jpg",
-        "description": "Description of Vapokiss",
-        "rating": 4,
-        "categories": ["Accessories", "Pipes"],
-        "price": 1300,
-        "flavours": ["Triple berry ice"]
-      },
-      {
-        "id": 6,
-        "title": "Apple ",
-        "image": "/vape_products/vape5.jpg",
-        "description": "Description of Apple Watch Series 7",
-        "rating": 4,
-        "categories": ["Starter kits", "Pod devices"],
-        "price": 2300,
-        "flavours": ["Mango peach", "Sakura grape", "Watermelon bubblegum"]
-      },
-      {
-        "id": 7,
-        "title": "Apple ",
-        "image": "/vape_products/vape7.jpg",
-        "description": "Description of Apple Watch Series 7",
-        "rating": 4,
-        "categories": ["Pod mods", "Disposables"],
-        "price": 2300,
-        "flavours": ["Triple berry ice", "Watermelon bubblegum"]
-      },
-      {
-        "id": 8,
-        "title": "Apple ",
-        "image": "/vape_products/vape8.jpg",
-        "description": "Description of Apple Watch Series 7",
-        "rating": 4,
-        "categories": ["Dry herb", "E-liquids"],
-        "price": 2300,
-        "flavours": ["Bluerazz ice", "Cranberry grape"]
-      },
-      {
-        "id": 9,
-        "title": "Apple ",
-        "image": "/vape_products/vape9.jpg",
-        "description": "Description of Apple Watch Series 7",
-        "rating": 4,
-        "categories": ["Nic salts", "Pod devices"],
-        "price": 2300,
-        "flavours": ["Bluerazz ice", "Sakura grape", "Watermelon bubblegum"]
-      },
-      {
-        "id": 10,
-        "title": "Apple ",
-        "image": "/vape_products/vape10.jpg",
-        "description": "Description of Apple Watch Series 7",
-        "rating": 4,
-        "categories": ["Disposables", "Accessories"],
-        "price": 2300,
-        "flavours": ["Watermelon bubblegum"]
-      },
-      {
-        "id": 11,
-        "title": "Apple ",
-        "image": "/vape_products/vape12.jpg",
-        "description": "Description of Apple Watch Series 7",
-        "rating": 4,
-        "categories": ["E-liquids", "Pod mods"],
-        "price": 2300,
-        "flavours": ["Rainbow candy", "Energy", "Mango peach"]
-      }
-    ]
-  
-
-  
-  
-
-
+  "products": [
+    {
+      "id": 1,
+      "title": "Product 1",
+      "image": "/vape_products/vape_1.jpg",
+      "description": "Description of Product 1",
+      "rating": 4,
+      "categories": ["Pod devices", "Accessories"],
+      "price": 2300,
+      "flavours": [
+        "Triple berry ice",
+        "Bluerazz ice",
+        "Cranberry grape",
+        "Rainbow candy"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Product 2",
+      "image": "/vape_products/vape_11.jpg",
+      "description": "Description of Product 2",
+      "rating": 4,
+      "categories": ["Dry herb", "Pipes"],
+      "price": 2300,
+      "flavours": [
+        "Energy",
+        "Mango peach",
+        "Sakura grape",
+        "Watermelon bubblegum"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "ElfBar 5000puffs",
+      "image": "/vape_products/vape2.jpg",
+      "description": "Description of ElfBar 5000puffs",
+      "rating": 4,
+      "categories": ["Pod mods", "E-liquids"],
+      "price": 2300,
+      "flavours": [
+        "Triple berry ice",
+        "Bluerazz ice",
+        "Cranberry grape",
+        "Rainbow candy",
+        "Energy",
+        "Mango peach",
+        "Sakura grape",
+        "Watermelon bubblegum"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Apple ",
+      "image": "/vape_products/vape3.jpg",
+      "description": "Description of Apple Watch Series 7",
+      "rating": 4,
+      "categories": ["Disposables", "Nic salts"],
+      "price": 2300,
+      "flavours": [
+        "Triple berry ice",
+        "Bluerazz ice",
+        "Cranberry grape",
+        "Watermelon bubblegum"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Vapokiss",
+      "image": "/vape_products/vape4.jpg",
+      "description": "Description of Vapokiss",
+      "rating": 4,
+      "categories": ["Accessories", "Pipes"],
+      "price": 1300,
+      "flavours": ["Triple berry ice"]
+    },
+    {
+      "id": 6,
+      "title": "Apple ",
+      "image": "/vape_products/vape5.jpg",
+      "description": "Description of Apple Watch Series 7",
+      "rating": 4,
+      "categories": ["Starter kits", "Pod devices"],
+      "price": 2300,
+      "flavours": ["Mango peach", "Sakura grape", "Watermelon bubblegum"]
+    },
+    {
+      "id": 7,
+      "title": "Apple ",
+      "image": "/vape_products/vape7.jpg",
+      "description": "Description of Apple Watch Series 7",
+      "rating": 4,
+      "categories": ["Pod mods", "Disposables"],
+      "price": 2300,
+      "flavours": ["Triple berry ice", "Watermelon bubblegum"]
+    },
+    {
+      "id": 8,
+      "title": "Apple ",
+      "image": "/vape_products/vape8.jpg",
+      "description": "Description of Apple Watch Series 7",
+      "rating": 4,
+      "categories": ["Dry herb", "E-liquids"],
+      "price": 2300,
+      "flavours": ["Bluerazz ice", "Cranberry grape"]
+    },
+    {
+      "id": 9,
+      "title": "Apple ",
+      "image": "/vape_products/vape9.jpg",
+      "description": "Description of Apple Watch Series 7",
+      "rating": 4,
+      "categories": ["Nic salts", "Pod devices"],
+      "price": 2300,
+      "flavours": ["Bluerazz ice", "Sakura grape", "Watermelon bubblegum"]
+    },
+    {
+      "id": 10,
+      "title": "Apple ",
+      "image": "/vape_products/vape10.jpg",
+      "description": "Description of Apple Watch Series 7",
+      "rating": 4,
+      "categories": ["Disposables", "Accessories"],
+      "price": 2300,
+      "flavours": ["Watermelon bubblegum"]
+    },
+    {
+      "id": 11,
+      "title": "Apple ",
+      "image": "/vape_products/vape12.jpg",
+      "description": "Description of Apple Watch Series 7",
+      "rating": 4,
+      "categories": ["E-liquids", "Pod mods"],
+      "price": 2300,
+      "flavours": ["Rainbow candy", "Energy", "Mango peach"]
+    }
+  ]
 }

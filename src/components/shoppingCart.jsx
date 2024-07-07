@@ -1,76 +1,103 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Checkout from "./Checkout";
 
-
-function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity, emptyCart }) {
+function ShoppingCart({
+  addToCart,
+  cartItems,
+  removeFromCart,
+  updateQuantity,
+  emptyCart,
+}) {
   const [isCheckout, setIsCheckout] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(true);
   const navigate = useNavigate();
-    // Calculate the total original price and total cost
-    const totalOriginalPrice = cartItems.reduce((total, item) => total + (item.originalPrice || item.price) * item.quantity, 0);
-    const totalCost = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  // Calculate the total original price and total cost
+  const totalOriginalPrice = cartItems.reduce(
+    (total, item) => total + (item.originalPrice || item.price) * item.quantity,
+    0
+  );
+  const totalCost = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   // Load cart open state from local storage on component mount
   useEffect(() => {
     const storedCartOpen = localStorage.getItem("isCartOpen");
     setIsCartOpen(storedCartOpen === "true");
   }, []);
-    // Load checkout state from local storage on component mount
-    useEffect(() => {
-      const savedIsCheckout = localStorage.getItem("isCheckout");
-      if (savedIsCheckout === "true") {
-        setIsCheckout(true);
-      }
-    }, []);
-  
-    useEffect(() => {
-      // Scroll to the top when the component mounts
-      window.scrollTo(0, 0);
-    }, []);
-      // Save cart open state to local storage whenever it changes
+  // Load checkout state from local storage on component mount
+  useEffect(() => {
+    const savedIsCheckout = localStorage.getItem("isCheckout");
+    if (savedIsCheckout === "true") {
+      setIsCheckout(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
+  // Save cart open state to local storage whenever it changes
   useEffect(() => {
     localStorage.setItem("isCartOpen", isCartOpen.toString());
   }, [isCartOpen]);
 
-    // Save checkout state to local storage whenever it changes
-    useEffect(() => {
-      localStorage.setItem("isCheckout", isCheckout.toString());
-    }, [isCheckout]);
+  // Save checkout state to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("isCheckout", isCheckout.toString());
+  }, [isCheckout]);
 
-    const handleProceedToCheckout = () => {
-      setIsCheckout(true);
-    };
+  const handleProceedToCheckout = () => {
+    setIsCheckout(true);
+  };
 
-    const closeCart = () => {
-      setIsCartOpen(false); // Close the cart
-      setIsCheckout(false)
-      navigate(localStorage.getItem("previousLocation") || "/");
-    };
+  const closeCart = () => {
+    setIsCartOpen(false); // Close the cart
+    setIsCheckout(false);
+    navigate(localStorage.getItem("previousLocation") || "/");
+  };
 
-    function closeCheckout () {
-      setIsCheckout(false)
-      localStorage.removeItem("isCheckout")
-    }
-  
-  
-    if (isCheckout) {
-      return <Checkout cartItems={cartItems} totalOriginalPrice={totalOriginalPrice} totalCost={totalCost} navigateToCart={()=>setIsCheckout(false)} emptyCart={emptyCart} closeCheckout={closeCheckout}  />;
-    }
+  function closeCheckout() {
+    setIsCheckout(false);
+    localStorage.removeItem("isCheckout");
+  }
+
+  if (isCheckout) {
+    return (
+      <Checkout
+        cartItems={cartItems}
+        totalOriginalPrice={totalOriginalPrice}
+        totalCost={totalCost}
+        navigateToCart={() => setIsCheckout(false)}
+        emptyCart={emptyCart}
+        closeCheckout={closeCheckout}
+      />
+    );
+  }
 
   return (
     <div className="container mt-12 mx-auto p-4">
-   
-   <div>
+      <div>
         <nav className="flex" aria-label="Breadcrumb ">
           <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-          <li className="inline-flex items-center">
-      <a href="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-        <svg className="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-        </svg>
-        Home
-      </a>
-    </li>
+            <li className="inline-flex items-center">
+              <a
+                href="/"
+                className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              >
+                <svg
+                  className="w-3 h-3 me-2.5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                </svg>
+                Home
+              </a>
+            </li>
 
             <li aria-current="page">
               <div className="flex items-center">
@@ -107,7 +134,7 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity, em
                   />
                 </svg>
                 <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Shopping Cart
+                  Shopping Cart
                 </span>
               </div>
             </li>
@@ -115,100 +142,204 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity, em
         </nav>
       </div>
 
-
       <h2 className="text-2xl text-center font-bold mb-4">Shopping Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
         <div className="grid grid-cols-1 gap-4">
-     <ul>
-                 {cartItems.map((item) => (
-               <li key={item.id} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
-               <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-                 <a href="#" className="shrink-0 md:order-1">
-                  <img className="h-20 w-20 " src={item.image} alt={item.title} />
-                  
-               </a>
-              
-                <label htmlFor="counter-input" className="sr-only">Choose quantity:</label>
-                 <div className="flex items-center justify-between md:order-3 md:justify-end">
-                   <div className="flex items-center">
-                     <button onClick={() => updateQuantity(item.id, item.quantity - 1)} type="button" id="decrement-button" data-input-counter-decrement="counter-input" className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                       <svg className="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
-                      </svg>
-                     </button>
-                     <input type="text" id="counter-input" data-input-counter className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value={item.quantity} required />
-                    <button onClick={() => updateQuantity(item.id, item.quantity + 1)} type="button" id="increment-button" data-input-counter-increment="counter-input" className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                       <svg className="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16" />
-                       </svg>
-                     </button>
-                  </div>
-                   <div className="text-end md:order-4 md:w-32">
-                    <p className="text-base font-bold text-gray-900 dark:text-white">Ksh.{item.price}</p>
-                  </div>
-                 </div>
-              
-                 <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                   <h1 className="text-base font-medium text-gray-900 dark:text-white">{item.title}</h1>
-              
-                   <div className="flex items-center gap-4">
-            
-              
-                     <button onClick={() => removeFromCart(item.id)} type="button" className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
-                       <svg className="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
-</svg>
+          <ul>
+            {cartItems.map((item) => (
+              <li
+                key={item.id}
+                className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6"
+              >
+                <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
+                  <a href="#" className="shrink-0 md:order-1">
+                    <img
+                      className="h-20 w-20 "
+                      src={item.image}
+                      alt={item.title}
+                    />
+                  </a>
 
-                       Remove
-                     </button>
+                  <label htmlFor="counter-input" className="sr-only">
+                    Choose quantity:
+                  </label>
+                  <div className="flex items-center justify-between md:order-3 md:justify-end">
+                    <div className="flex items-center">
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
+                        type="button"
+                        id="decrement-button"
+                        data-input-counter-decrement="counter-input"
+                        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+                      >
+                        <svg
+                          className="h-2.5 w-2.5 text-gray-900 dark:text-white"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 18 2"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M1 1h16"
+                          />
+                        </svg>
+                      </button>
+                      <input
+                        type="text"
+                        id="counter-input"
+                        data-input-counter
+                        className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
+                        placeholder=""
+                        value={item.quantity}
+                        required
+                      />
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
+                        type="button"
+                        id="increment-button"
+                        data-input-counter-increment="counter-input"
+                        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+                      >
+                        <svg
+                          className="h-2.5 w-2.5 text-gray-900 dark:text-white"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 18 18"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 1v16M1 9h16"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <div className="text-end md:order-4 md:w-32">
+                      <p className="text-base font-bold text-gray-900 dark:text-white">
+                        Ksh.{item.price}
+                      </p>
+                    </div>
                   </div>
-                </div>              
+
+                  <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
+                    <h1 className="text-base font-medium text-gray-900 dark:text-white">
+                      {item.title}
+                    </h1>
+
+                    <div className="flex items-center gap-4">
+                      <button
+                        onClick={() => removeFromCart(item.id)}
+                        type="button"
+                        className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500"
+                      >
+                        <svg
+                          className="me-1.5 h-5 w-5"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
+                          />
+                        </svg>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </li> 
-                ))}
-              </ul>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
-          <div className="mx-auto mt-6 max-w-full flex-1 space-y-6 ">
+      <div className="mx-auto mt-6 max-w-full flex-1 space-y-6 ">
         <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-          <p className="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
+          <p className="text-xl font-semibold text-gray-900 dark:text-white">
+            Order summary
+          </p>
 
           <div className="space-y-4">
             <div className="space-y-2">
               <dl className="flex items-center justify-between gap-4">
-                <dt className="text-base font-normal text-gray-500 dark:text-gray-400">Price</dt>
-                <dd className="text-base font-medium text-gray-900 dark:text-white">Ksh.{totalOriginalPrice.toFixed(2)}</dd>
+                <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
+                  Price
+                </dt>
+                <dd className="text-base font-medium text-gray-900 dark:text-white">
+                  Ksh.{totalOriginalPrice.toFixed(2)}
+                </dd>
               </dl>
 
               <dl className="flex items-center justify-between gap-4">
                 <dt className="text-base font-normal text-red-500">Discount</dt>
                 <dd className="text-base font-medium text-red-600">-0.00</dd>
               </dl>
-           
             </div>
 
             <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-              <dt className="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-              <dd className="text-base font-bold text-gray-900 dark:text-white">Ksh.{totalCost.toFixed(2)}</dd>
+              <dt className="text-base font-bold text-gray-900 dark:text-white">
+                Total
+              </dt>
+              <dd className="text-base font-bold text-gray-900 dark:text-white">
+                Ksh.{totalCost.toFixed(2)}
+              </dd>
             </dl>
           </div>
 
-          <button onClick={handleProceedToCheckout} className="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</button>
+          <button
+            onClick={handleProceedToCheckout}
+            className="flex w-full items-center justify-center rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          >
+            Proceed to Checkout
+          </button>
 
           <div className="flex items-center justify-center gap-2">
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
-            <button onClick={closeCart} className="inline-flex items-center gap-2 text-sm font-extrabold text-primary-700 underline hover:no-underline dark:text-primary-500">
+            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+              {" "}
+              or{" "}
+            </span>
+            <button
+              onClick={closeCart}
+              className="inline-flex items-center gap-2 text-sm font-extrabold text-primary-700 underline hover:no-underline dark:text-primary-500"
+            >
               Close Cart and Continue Shopping
-              <svg className="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+              <svg
+                className="h-5 w-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 12H5m14 0-4 4m4-4-4-4"
+                />
               </svg>
             </button>
           </div>
         </div>
-
-       
       </div>
 
       {/* <div className="hidden xl:mt-8 xl:block">
@@ -316,9 +447,6 @@ function ShoppingCart({ addToCart, cartItems, removeFromCart, updateQuantity, em
             </div>
           </div>
         </div> */}
-    
-
-      
     </div>
   );
 }

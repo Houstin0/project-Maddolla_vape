@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Checkout({
-  cartItems,
   totalOriginalPrice,
   totalCost,
   navigateToCart,
   emptyCart,
-  closeCheckout
+  closeCheckout,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ function Checkout({
     setFormData({ ...formData, [name]: value });
   };
 
-   const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
     console.log(formData);
@@ -34,9 +33,9 @@ function Checkout({
   };
   const closeModal = () => {
     setIsModalOpen(false);
-    emptyCart()
-    closeCheckout()
-    navigate('/');
+    emptyCart();
+    closeCheckout();
+    navigate("/");
   };
 
   useEffect(() => {
@@ -49,20 +48,29 @@ function Checkout({
       <div>
         <nav className="flex" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-          <li className="inline-flex items-center">
-      <a href="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-        <svg className="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-        </svg>
-        Home
-      </a>
-    </li>
+            <li className="inline-flex items-center">
+              <a
+                href="/"
+                className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              >
+                <svg
+                  className="w-3 h-3 me-2.5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                </svg>
+                Home
+              </a>
+            </li>
             <li className="inline-flex items-center">
               <button
                 onClick={navigateToCart}
                 className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-white dark:hover:text-blue-600"
               >
-      <svg
+                <svg
                   className="rtl:rotate-180 w-3 h-3 text-gray-700 mx-1"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,8 +85,6 @@ function Checkout({
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
-
-
                 <svg
                   className="w-5 h-5 me-1 text-gray-800 dark:text-white"
                   aria-hidden="true"
@@ -156,9 +162,11 @@ function Checkout({
               <dd className="text-base font-medium text-red-600">-0.00</dd>
             </dl>
             <dl className="flex items-center justify-between gap-4">
-                <dt className="text-base font-normal  text-gray-900 dark:text-white">Delivery Fee</dt>
-                <dd className="text-base font-medium text-green-600">Ksh 0.00</dd>
-              </dl>
+              <dt className="text-base font-normal  text-gray-900 dark:text-white">
+                Delivery Fee
+              </dt>
+              <dd className="text-base font-medium text-green-600">Ksh 0.00</dd>
+            </dl>
           </div>
           <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
             <dt className="text-base font-bold text-gray-900 dark:text-white">
@@ -223,7 +231,7 @@ function Checkout({
                 id="phone"
                 name="phone"
                 value={formData.phone}
-                onChange={handleInputChange}  
+                onChange={handleInputChange}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="0712345678"
                 pattern="[0-9]{10}"
@@ -291,7 +299,6 @@ function Checkout({
             </div>
           </div>
 
-
           <button
             type="submit"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -300,51 +307,51 @@ function Checkout({
           </button>
         </form>
       </div>
-        {/* Success Modal */}
-  {isModalOpen && (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-      <div className="relative w-auto max-w-lg mx-auto my-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg relative flex flex-col p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-              Order Placed Successfully!
-            </h3>
-            <button
-              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-              onClick={closeModal}
-            >
-              <svg
-                className="w-6 h-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-          <p className="text-base text-gray-700 dark:text-gray-300">
-            Thank you for your order! Your order has been successfully placed.
-          </p>
-          <div className="mt-6">
-            <button
-              onClick={closeModal}
-              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-medium transition duration-300"
-            >
-              Close
-            </button>
+      {/* Success Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+          <div className="relative w-auto max-w-lg mx-auto my-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg relative flex flex-col p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                  Order Placed Successfully!
+                </h3>
+                <button
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                  onClick={closeModal}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <p className="text-base text-gray-700 dark:text-gray-300">
+                Thank you for your order! Your order has been successfully
+                placed.
+              </p>
+              <div className="mt-6">
+                <button
+                  onClick={closeModal}
+                  className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-medium transition duration-300"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  )}
-
+      )}
     </div>
   );
 }

@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
 } from "react-router-dom";
 import NavBar from "./components/navBar";
 import Home from "./components/home";
@@ -88,8 +87,7 @@ function App() {
   return (
     <Router>
       <div className="bg-gray-100 dark:bg-black">
-<Banner/>
-       
+        <Banner />
 
         <NavBar onSearch={handleSearch} cartItems={cartItems} />
 
@@ -100,7 +98,9 @@ function App() {
           />
           <Route
             path="/search"
-            element={<SearchResults searchQuery={searchQuery} addToCart={addToCart}/>}
+            element={
+              <SearchResults searchQuery={searchQuery} addToCart={addToCart} />
+            }
           />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -117,14 +117,13 @@ function App() {
                 cartItems={cartItems}
                 removeFromCart={removeFromCart}
                 updateQuantity={updateQuantity}
-                emptyCart={()=>setCartItems([])}
+                emptyCart={() => setCartItems([])}
               />
             }
           />
         </Routes>
 
         <Footer />
-      
       </div>
     </Router>
   );

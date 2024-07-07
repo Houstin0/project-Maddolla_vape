@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import productsData from "../db.json";
 import ProductCards from "./productCards";
@@ -9,7 +9,7 @@ function Home({ addToCart, cartItems }) {
   const navigate = useNavigate();
   const carouselRef = useRef(null);
   const imageDivRef = useRef(null);
-  
+
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === productsData.ads.length - 1 ? 0 : prevIndex + 1
@@ -183,19 +183,16 @@ function Home({ addToCart, cartItems }) {
             ))}
           </div>
 
-
           <div
             className="hidden lg:flex justify-center h-[200px] mt-4 rounded-lg"
             ref={imageDivRef}
           >
             <img
-              src="/assets/delivery_ad.png" 
+              src="/assets/delivery_ad.png"
               alt="Delivery Ad"
               className="rounded-lg"
             />
           </div>
-
-
         </div>
       </div>
 
