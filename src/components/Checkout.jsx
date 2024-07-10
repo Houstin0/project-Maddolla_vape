@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 function Checkout({
+  cartItems,
   totalOriginalPrice,
   totalCost,
   navigateToCart,
@@ -28,6 +30,31 @@ function Checkout({
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    const productDetails = cartItems
+    .map(item => `${item.title} (Quantity: ${item.quantity})`)
+    .join(", ");
+
+    emailjs
+    .send(
+      'service_2ohujbx',
+      'template_l71848b',
+      {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        email: formData.email,
+        location: formData.location,
+        paymentOption: formData.paymentOption,
+        products: productDetails,
+        from_name: "madolla_vape",
+        to_name: "Houstin",
+        
+      },
+      'NtKE8fqhPTdBJsAvx'
+    )
+  
+
+
     console.log(formData);
     setIsModalOpen(true);
   };
@@ -147,6 +174,21 @@ function Checkout({
         </p>
         <div className="space-y-4">
           <div className="space-y-2">
+
+          <div className="space-y-2 mt-4">
+          <p className="text-lg font-semibold text-gray-900 dark:text-white">
+            Products
+          </p>
+          <ul className="list-disc list-inside">
+            {cartItems.map((item) => (
+              <li key={item.id} className="text-base text-gray-700 dark:text-gray-300">
+                {item.title} - {item.quantity}
+              </li>
+            ))}
+          </ul>
+          </div>
+
+
             <dl className="flex items-center justify-between gap-4">
               <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
                 Price
