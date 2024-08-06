@@ -135,16 +135,6 @@
     {
       "id": 10,
       "title": "Product 10 ",
-      "image": "/vape_products/vape10.jpg",
-      "description": "Description of Apple Watch Series 7",
-      "rating": 4,
-      "categories": ["Disposables", "Accessories"],
-      "price": 2300,
-      "flavours": ["Watermelon bubblegum"]
-    },
-    {
-      "id": 11,
-      "title": "Product 11 ",
       "image": "/vape_products/vape12.jpg",
       "description": "Description of Apple Watch Series 7",
       "rating": 4,
