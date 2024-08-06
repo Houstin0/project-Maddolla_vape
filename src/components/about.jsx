@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="bg-gray-200 antialiased dark:bg-gray-900 pb-6 pt-16 mx-4 md:mx-12">
+    <section className="bg-gray-100 antialiased dark:bg-gray-900 pb-6 pt-16 mx-4 md:mx-12">
       <div>
         <nav className="flex ml-12" aria-label="Breadcrumb ">
           <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -51,7 +51,7 @@ export default function About() {
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <div className="mx-auto max-w-5xl">
           <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl flex items-center justify-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r to-[#FC411E] from-[#0A005A]">
               About
             </span>{" "}
             Us
