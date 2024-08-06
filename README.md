@@ -13,7 +13,7 @@
 
 This project is an e-commerce website built using React, Vite, JavaScript, and Tailwind CSS. Madolla Vape website is designed to provide a user-friendly and accessible online store where customers can easily find and purchase high-quality vape pens without the need to log in. The project aims to increase market reach and provide a seamless shopping experience that encourages repeat business and customer satisfaction.
 
-The app has been deployed, to visit it follow the [Deployed Site Link](https://maliduka.onrender.com/).
+The app has been deployed, to visit it follow this: [Deployed Site Link](https://maliduka.onrender.com/).
 
 ## Table of Contents
 
